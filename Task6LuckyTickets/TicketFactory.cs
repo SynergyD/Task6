@@ -13,7 +13,6 @@ namespace Task6LuckyTickets
             for (int i = Min; i <= Max; i++)
             {
                 yield return new Ticket(i);
-                //return tickets.GetEnumerator();
             }
         }
 

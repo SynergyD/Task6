@@ -11,6 +11,23 @@ namespace Task6LuckyTickets
         {
             _tickets = tickets;
         }
+        
+        protected int[] SplitTicketToArray(Ticket ticket)
+        {
+            var splitedArray = new int[CountOfNum];
+            var index= splitedArray.Length - 1;
+
+            while (ticket.Number > Devider - 1)
+            {
+                splitedArray[index] = ticket.Number % Devider;
+                ticket.Number = ticket.Number / Devider;
+                index--;
+            }
+
+            splitedArray[index] = ticket.Number;
+
+            return splitedArray;
+        }
 
         protected abstract  bool IsLucky(Ticket ticket);
 
