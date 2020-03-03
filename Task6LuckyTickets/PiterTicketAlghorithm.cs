@@ -9,10 +9,14 @@ namespace Task6LuckyTickets
         protected override bool IsLucky(Ticket ticket)
         {
             bool isLucky = false;
-            if (SumOfEvenNum(SplitTicketToArray(ticket)) == SumOfOddNum(SplitTicketToArray(ticket)))
+            int sumOfEven = SumOfEvenNum(SplitTicketToArray(ticket));
+            int sumOfOdd = SumOfOddNum(SplitTicketToArray(ticket));
+
+            if (sumOfEven == sumOfOdd)
             {
                 isLucky = true;
             }
+
             return isLucky;
         }
 
@@ -20,28 +24,24 @@ namespace Task6LuckyTickets
         {
             int sum = 0;
 
-            for (int i = 1; i < splitedArray.Length; i+=2)
+            for (int i = 1; i < splitedArray.Length; i += 2)
             {
                 sum += splitedArray[i];
             }
-            
+
             return sum;
         }
-        
+
         private int SumOfOddNum(int[] splitedArray)
         {
             int sum = 0;
 
-            for (int i = 0; i < splitedArray.Length; i+=2)
+            for (int i = 0; i < splitedArray.Length; i += 2)
             {
                 sum += splitedArray[i];
             }
-            
+
             return sum;
         }
-        
-        
-
-        
     }
 }

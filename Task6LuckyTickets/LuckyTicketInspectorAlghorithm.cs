@@ -1,9 +1,12 @@
+using System;
+using System.Linq;
+
 namespace Task6LuckyTickets
 {
     public abstract  class LuckyTicketInspectorAlghorithm
     {
         protected const int CountOfNum = 6;
-        protected const int Devider = 10;
+        private const int Devider = 10;
 
         private readonly TicketFactory _tickets;
         
@@ -15,16 +18,16 @@ namespace Task6LuckyTickets
         protected int[] SplitTicketToArray(Ticket ticket)
         {
             var splitedArray = new int[CountOfNum];
-            var index= splitedArray.Length - 1;
+            int temp = ticket.Number;
 
-            while (ticket.Number > Devider - 1)
+            for (int i = splitedArray.Length - 1; i >= 0; i--)
             {
-                splitedArray[index] = ticket.Number % Devider;
-                ticket.Number = ticket.Number / Devider;
-                index--;
+                splitedArray[i] = ticket.Number % Devider;
+                ticket.Number /=  Devider;
+                
             }
 
-            splitedArray[index] = ticket.Number;
+            ticket.Number = temp;
 
             return splitedArray;
         }
@@ -33,17 +36,7 @@ namespace Task6LuckyTickets
 
         public int CountLuckyTickets()
         {
-            int sum = 0;
-
-            foreach (Ticket ticket in _tickets)
-            {
-                if (IsLucky(ticket))
-                {
-                    sum++;
-                }
-            }
-            
-            return sum;
+            return _tickets.Count(ticket => IsLucky(ticket));
         }
     }
 }
