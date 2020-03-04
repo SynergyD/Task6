@@ -7,37 +7,51 @@ namespace Task6LuckyTickets
     {
         public static void Main(string[] args)
         {
-            string path = args[0];
             TicketFactory tickets = new TicketFactory();
-            Alghorithm a = Alghorithm.None;
 
-            using (StreamReader sr = new StreamReader(path))
-                {
-                    string text = sr.ReadLine();
-                    if (text == "Piter")
-                    {
-                        a = Alghorithm.Piter;
-                    }
-                    if (text == "Moscow")
-                    {
-                        a = Alghorithm.Moscow;
-                    }
-                }
-
-                switch (a)
+            switch (GetAlghorithm(args))
             {
                 case Alghorithm.Moscow:
-                    MoscowTicketAlghorithm alghorithm = new MoscowTicketAlghorithm(tickets);
-                    Console.WriteLine("Moscow Alghorithm:{0}",alghorithm.CountLuckyTickets());
+                    MoscowTicketAlghorithm moscowAlghorithm = new MoscowTicketAlghorithm(tickets);
+                    Console.WriteLine("Moscow Alghorithm:{0}",moscowAlghorithm.CountLuckyTickets());
                     break;
                 case Alghorithm.Piter:
-                    PiterTicketAlghorithm alghorithm2 = new PiterTicketAlghorithm(tickets);
-                    Console.WriteLine("Piter Alghorithm:{0}",alghorithm2.CountLuckyTickets());
+                    PiterTicketAlghorithm piterAlghorithm = new PiterTicketAlghorithm(tickets);
+                    Console.WriteLine("Piter Alghorithm:{0}",piterAlghorithm.CountLuckyTickets());
                     break;
                 case Alghorithm.None:
                     Console.WriteLine("Not complete");
                     break;
             }
+        }
+
+        private static Alghorithm GetAlghorithm(string[] _args)
+        {
+            string path = GetArg(_args);
+            if (!File.Exists(path))
+            {
+                throw new FileNotFoundException();
+            }
+
+            string textAlghorithm;
+
+            using (StreamReader streamReader = new StreamReader(path))
+            {
+                textAlghorithm = streamReader.ReadLine();
+            }
+
+            Enum.TryParse(textAlghorithm, out Alghorithm alghorithm);
+            return alghorithm;
+        }
+
+        private static string GetArg(string[] _args)
+        {
+            if (_args.Length < 1)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            return _args[0];
         }
     }
 }
