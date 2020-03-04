@@ -9,7 +9,7 @@
         <e p="Alghorithm.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="LuckyTicketInspectorAlghorithm.cs" t="Include" />
-        <e p="MoskowTicketAlghorithm.cs" t="Include" />
+        <e p="MoscowTicketAlghorithm.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="PiterTicketAlghorithm.cs" t="Include" />
         <e p="Program.cs" t="Include" />

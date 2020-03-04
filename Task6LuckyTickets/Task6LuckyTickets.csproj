@@ -39,7 +39,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="LuckyTicketInspectorAlghorithm.cs" />
-        <Compile Include="MoskowTicketAlghorithm.cs" />
+        <Compile Include="MoscowTicketAlghorithm.cs" />
         <Compile Include="PiterTicketAlghorithm.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

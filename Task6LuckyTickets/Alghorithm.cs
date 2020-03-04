@@ -4,6 +4,6 @@ namespace Task6LuckyTickets
     {
         None,
         Piter,
-        Moskow
+        Moscow
     }
 }

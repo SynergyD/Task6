@@ -6,8 +6,9 @@ namespace Task6LuckyTickets
 {
     public class TicketFactory : IEnumerable<Ticket>
     {
-        private const int Min = 1;
-        private const int Max = 999999;
+        private int Min = 1;
+        private int Max = 999999;
+        
         public IEnumerator<Ticket> GetEnumerator()
         {
             for (int i = Max; i >= Min; i--)

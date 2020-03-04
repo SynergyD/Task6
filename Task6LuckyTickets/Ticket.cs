@@ -7,6 +7,6 @@ namespace Task6LuckyTickets
             Number = number;
         }
         
-        public int Number { get; set; }
+        public int Number { get; }
     }
 }
