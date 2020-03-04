@@ -7,21 +7,33 @@ namespace Task6LuckyTickets
     {
         public static void Main(string[] args)
         {
-            TicketFactory tickets = new TicketFactory();
+            string instruction = "Input path";
 
-            switch (GetAlghorithm(args))
+            try
             {
-                case Alghorithm.Moscow:
-                    MoscowTicketAlghorithm moscowAlghorithm = new MoscowTicketAlghorithm(tickets);
-                    Console.WriteLine("Moscow Alghorithm:{0}",moscowAlghorithm.CountLuckyTickets());
-                    break;
-                case Alghorithm.Piter:
-                    PiterTicketAlghorithm piterAlghorithm = new PiterTicketAlghorithm(tickets);
-                    Console.WriteLine("Piter Alghorithm:{0}",piterAlghorithm.CountLuckyTickets());
-                    break;
-                case Alghorithm.None:
-                    Console.WriteLine("Not complete");
-                    break;
+                TicketFactory tickets = new TicketFactory();
+                switch (GetAlghorithm(args))
+                {
+                    case Alghorithm.Moscow:
+                        MoscowTicketAlghorithm moscowAlghorithm = new MoscowTicketAlghorithm(tickets);
+                        Console.WriteLine("Moscow Alghorithm:{0}", moscowAlghorithm.CountLuckyTickets());
+                        break;
+                    case Alghorithm.Piter:
+                        PiterTicketAlghorithm piterAlghorithm = new PiterTicketAlghorithm(tickets);
+                        Console.WriteLine("Piter Alghorithm:{0}", piterAlghorithm.CountLuckyTickets());
+                        break;
+                    case Alghorithm.None:
+                        Console.WriteLine("Not complete");
+                        break;
+                }
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine(instruction);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(instruction);
             }
         }
 
